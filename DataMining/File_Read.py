@@ -58,6 +58,41 @@ def get_positive_data():
         #out_file.write('\r\n')
 
 
+#找到各病例居住地，得到一个字典，key为病例号，内容为住址
+def get_address():
+    file = docx.Document(no_empty_name)
+    num_address = {}#结果字典
+    num = 0
+    comma = 0
+    address = ""
+
+    for para in file.paragraphs:
+        if len(para.text) < 20:#病例头，可读出序号
+            for i in para.text:
+                if '0' <= i <= '9':
+                    num = num * 10 + int(i)
+            #print(num)
+        else:
+            for i in range(len(para.text)):
+                if para.text[i] == '，' or para.text[i] == ',':
+                    comma = comma + 1
+                if comma == 2:
+                    for getAddress in range(i + 1,len(para.text),1):
+
+                        if para.text[getAddress] == "。" or para.text[getAddress] == "人" or para.text[getAddress] == "，":
+                            num_address[num] = address
+                            break
+                        address = address + para.text[getAddress]
+                    #print(address)
+                    address = ""
+                    break
+            num = 0
+            comma = 0
+
+    for i in num_address.items():
+        print(i)
+
 if __name__ == '__main__':
-   # enter_remove()
-    get_positive_data()
+   #enter_remove()
+    #get_positive_data()
+   get_address()
