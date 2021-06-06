@@ -10,7 +10,6 @@ def geocode(location):
     base = 'https://restapi.amap.com/v3/geocode/geo'
     response = requests.get(base, parameters)
     answer = response.json()
-    print(answer['geocodes'][0]['location'])
+    return (answer['geocodes'][0]['location'])
 
-geocode('藁城区增村镇小果庄村')
 

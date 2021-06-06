@@ -51,13 +51,16 @@ def get_positive_data():
                     break
             num = 0
 
-    #with open("data/date_num.txt","w") as out_file:
-    for i in date_num.items():
-        print(i)
-        #out_file.write(i)
-        #out_file.write('\r\n')
+    # #with open("data/date_num.txt","w") as out_file:
+    # for i in date_num.items():
+    #     print(i)
+    #     #out_file.write(i)
+    #     #out_file.write('\r\n')
+    return date_num
 
-
-if __name__ == '__main__':
-   # enter_remove()
-    get_positive_data()
+#
+# if __name__ == '__main__':
+#    # enter_remove()
+enter_remove()
+date_num = get_positive_data()
+print(date_num)
