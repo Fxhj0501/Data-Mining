@@ -14,7 +14,7 @@ def geocode(location):
     answer = response.json()
     return (answer['geocodes'][0]['location'])
 
-def add_point(in_location,label,map):
+def add_center(in_location,color,map):
     """
     :param in_location: 经纬度
     :param label: 日期
@@ -23,12 +23,20 @@ def add_point(in_location,label,map):
     """
     folium.Marker(
         location=in_location,
-        popup=label,
-        #icon=folium.Icon(color=color)
+        popup='Center',
+        icon=folium.Icon(color=color)
     ).add_to(map)
 
-def add_centers(in_location, color, map):
-    folium.Marker(
+def add_point(in_location,label,color, map):
+    # folium.Marker(
+    #     location=in_location,
+    #     icon=folium.Icon(color=color,icon='cross')
+    # ).add_to(map)
+    folium.CircleMarker(
         location=in_location,
-        icon=folium.Icon(color=color)
+        radius=7,
+        popup=label,
+        color=color,
+        fill=True,
+        fill_color=color
     ).add_to(map)

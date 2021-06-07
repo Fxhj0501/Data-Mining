@@ -1,2 +1,5 @@
+from drawMap import *
+from SEIR import *
 if __name__ == '__main__':
-    pass
+    create_map()
+    predict()

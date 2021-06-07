@@ -5,6 +5,7 @@ from sklearn.metrics import accuracy_score
 import numpy
 import seaborn as sns; sns.set()
 from sklearn.datasets import make_blobs
+from loadFile import id_loc
 patient_idx_lat_lon = joblib.load('/Users/fengzijian/PycharmProjects/DataMiningHW/DataMining/data/patient_idx_lat_lon.pkl')
 del patient_idx_lat_lon['52']
 lat_lon_info = numpy.empty([0, 2])
@@ -20,3 +21,11 @@ y_kmeans = kmeans.predict(lat_lon_info)
 plt.scatter(lat_lon_info[:, 0], lat_lon_info[:, 1], c=y_kmeans, s=50, cmap='viridis')
 
 centers = kmeans.cluster_centers_
+labels = kmeans.labels_
+
+id_label = {}
+i = 0
+for key in id_loc:
+    id_label[key] = labels[i]
+    i += 1
+
