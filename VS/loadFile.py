@@ -1,7 +1,8 @@
 import joblib
 import linecache
 #id对应坐标
-id_loc = joblib.load('/Users/fengzijian/PycharmProjects/data_mining_hw/Data-Mining-master/patient/patient_idx_lat_lon.pkl')
+id_loc = joblib.load('/Users/fengzijian/PycharmProjects/DataMiningHW/DataMining/data/patient_idx_lat_lon.pkl')
+del id_loc['52']
 #data_num = {data:[id1,id2]}
 data_num = {}
 file = open("/Users/fengzijian/PycharmProjects/DataMiningHW/DataMining/data/date_num.txt")
